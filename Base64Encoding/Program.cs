@@ -7,18 +7,23 @@ namespace Base64Encoding
     {
         static void Main(string[] args)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("emrebiber");
-            string base64String = Convert.ToBase64String(bytes);
+            var plainText = "Hello, World!";
 
-            Console.WriteLine(base64String);
+            byte[] bytes = Encoding.ASCII.GetBytes(plainText);
+            string encodedBase64 = Convert.ToBase64String(bytes);
 
-            // decoding starts here
-            bytes = Convert.FromBase64String(base64String);
-            var decoded = Encoding.ASCII.GetString(bytes);
+            Console.WriteLine($"Plain Text: {plainText}");
+            Console.WriteLine($"Encoded Text: {encodedBase64}");
 
-            Console.WriteLine(decoded);
+            var encodedText = "SGVsbG8sIFdvcmxkIQ==";
 
-            Console.ReadKey();
+            bytes = Convert.FromBase64String(encodedText);
+            var decodedText = Encoding.ASCII.GetString(bytes);
+
+            Console.WriteLine($"Encoded Text: {encodedText}");
+            Console.WriteLine($"Plain Text: {decodedText}");
+
+            Console.ReadLine();
         }
     }
 }
